@@ -24,7 +24,6 @@
     "axios": "^1.8.4",
     "client": "file:",
     "eslint": "8.46.0",
-    "eslint-config-next": "13.4.13",
     "formik": "^2.4.6",
     "next": "13.4.13",
     "next-auth": "^4.24.11",
@@ -44,6 +43,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "eslint-config-next": "^15.5.0",
     "postcss-nesting": "^13.0.1"
   }
 }
