@@ -80,7 +80,7 @@ const Footer = (props: Props) => {
                         </div>
                     </div>
                     <br />
-                    <p className='text-center text-black dark:text-white'>Copywrite @ 2025 Elearning | All Rights Reserved</p>
+                    <p className='text-center text-black dark:text-white'>Copywrite @ 2025 BHI LEARNING | All Rights Reserved</p>
                     <br />
                 </div>
             </div>
