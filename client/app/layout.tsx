@@ -9,26 +9,22 @@ import { useLoadUserQuery } from '@/redux/features/api/apiSlice'
 import Loader from "./components/Loader/Loader"
 import socketIO from 'socket.io-client'
 import { useEffect } from 'react'
-import localFont from 'next/font/local'
+import { Poppins, Josefin_Sans } from 'next/font/google'
 
 // ✅ Socket Setup
 const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || ""
 const socket = socketIO(ENDPOINT, { transports: ['websocket'] })
 
-// ✅ Local Fonts
-const poppins = localFont({
-  src: [
-    { path: '/fonts/Poppins-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '/fonts/Poppins-Bold.woff2', weight: '700', style: 'normal' },
-  ],
+// ✅ Google Fonts
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
   variable: '--font-Poppins',
 })
 
-const josefin = localFont({
-  src: [
-    { path: '/fonts/JosefinSans-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '/fonts/JosefinSans-Bold.woff2', weight: '700', style: 'normal' },
-  ],
+const josefin = Josefin_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
   variable: '--font-Josefin',
 })
 
@@ -36,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${josefin.variable} 
+        className={`${poppins.variable} ${josefin.variable}
           !bg-white bg-no-repeat 
           dark:bg-gradient-to-b dark:from-gray-900 dark:to-black 
           duration-300`}
