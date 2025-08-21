@@ -11,7 +11,7 @@ import { styles } from "../../../styles/style";
 
 
 type Props = {
-    isTeam: boolean;
+    isTeam?: boolean;
 };
 
 const AllUsers: FC<Props> = ({ isTeam }) => {
