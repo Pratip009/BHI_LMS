@@ -15,9 +15,13 @@ app.use(express.json({ limit: "50mb" }));
 //cookie parser
 app.use(cookieParser());
 //cors
+//cors
 app.use(
   cors({
-    origin: ["http://localhost:3000", '"https://bhi-lms.vercel.app"'],
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://bhi-lms.vercel.app"
+        : "http://localhost:3000",
     credentials: true,
   })
 );
