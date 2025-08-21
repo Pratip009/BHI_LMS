@@ -17,8 +17,8 @@ app.use(cookieParser());
 //cors
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
-    credentials:true
+    origin: ["http://localhost:3000", '"https://bhi-lms.vercel.app"'],
+    credentials: true,
   })
 );
 
