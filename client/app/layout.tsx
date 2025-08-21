@@ -1,6 +1,6 @@
 'use client'
+
 import './globals.css'
-import type { Metadata } from 'next'
 import { ThemeProvider } from './utils/theme-provider'
 import { Toaster } from 'react-hot-toast'
 import { Providers } from './Provider'
@@ -11,9 +11,11 @@ import socketIO from 'socket.io-client'
 import { useEffect } from 'react'
 import localFont from 'next/font/local'
 
+// ✅ Socket Setup
 const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || ""
-const socketId = socketIO(ENDPOINT, { transports: ['websocket'] })
+const socket = socketIO(ENDPOINT, { transports: ['websocket'] })
 
+// ✅ Local Fonts
 const poppins = localFont({
   src: [
     { path: '/fonts/Poppins-Regular.woff2', weight: '400', style: 'normal' },
@@ -33,12 +35,17 @@ const josefin = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}>
+      <body
+        className={`${poppins.variable} ${josefin.variable} 
+          !bg-white bg-no-repeat 
+          dark:bg-gradient-to-b dark:from-gray-900 dark:to-black 
+          duration-300`}
+      >
         <Providers>
           <SessionProvider>
-            <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <Custom>{children}</Custom>
-              <Toaster position='top-center' reverseOrder={false} />
+              <Toaster position="top-center" reverseOrder={false} />
             </ThemeProvider>
           </SessionProvider>
         </Providers>
@@ -47,11 +54,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   )
 }
 
+// ✅ Custom Wrapper Component
 const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isLoading } = useLoadUserQuery({})
 
   useEffect(() => {
-    socketId.on("connection", () => { })
+    socket.on("connect", () => {
+      console.log("✅ Socket connected:", socket.id)
+    })
+
+    return () => {
+      socket.disconnect()
+    }
   }, [])
 
   return isLoading ? <Loader /> : <>{children}</>
