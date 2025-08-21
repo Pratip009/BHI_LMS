@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+bower_components/
+
+# Build outputs
+dist/
+build/
+.cache/
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+
+# Environment variables
+.env
+.env.* 
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+.jest/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Redis dump / Mongo backups
+dump.rdb
+*.rdb
+*.zip
+*.tar.gz
+*.tgz
+
+# Docker
+docker-compose.override.yml
+
+# Other caches
+.eslintcache
+.stylelintcache
+.cache-loader/
+.parcel-cache/

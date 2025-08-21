@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .order-details {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Elearning order is now confirmed!</h2>
+        <p>And we are as excited as you are</p>
+        <p>Dear <%= name %>,</p>
+        <p>Thank you for your order! Your order <strong>#<%= order._id %></strong> has been confirmed.</p>
+
+        <div class="order-details">
+            <h3>Order Details</h3>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td><%= order.name %></td>
+                    <td>1</td>
+                    <td>$<%= order.price %></td>
+                </tr>
+            </table>
+            <p class="total">Total: $<%= order.price %></p>
+        </div>
+
+        <p>If you have any questions about your order, please contact us at support@example.com.</p>
+        
+        <p>Best regards,</p>
+        <p><strong>BHI Customer Support Team</strong></p>
+
+        <div class="footer">
+            <p>© <%= new Date().getFullYear() %> Your Company. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

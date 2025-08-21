@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation - Bright Horizon Institute</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff4e00;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #ff4e00;
+            font-size: 24px;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+        .footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .footer a {
+            color: #ff4e00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="company-name">Bright Horizon Institute</div>
+        <h1>Welcome, <%= user.name %>!</h1>
+        <p>Thank you for registering in our Learning Management System.</p>
+        <p>Your account activation code is:</p>
+        <h2><%= activationCode %></h2>
+        <p class="warning">⚠ Please enter this code in your activation page within next 5 mins</p>
+        <p>Please enter this code in the app to activate your account.</p>
+        <p>If you did not request this, please ignore this email.</p>
+        <div class="footer">
+            <p>If you have any issues, feel free to contact us at  
+               <a href="mailto:training@brighthorizoninstitute.com">training@brighthorizoninstitute.com</a>
+            </p>
+            <p>© 2025 Bright Horizon Institute. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
