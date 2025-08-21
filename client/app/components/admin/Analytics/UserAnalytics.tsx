@@ -12,7 +12,7 @@ import {
 import Loader from '../../Loader/Loader';
 
 type Props = {
-    isDashboard: boolean;
+    isDashboard?: boolean;
 };
 
 const UserAnalytics: FC<Props> = ({ isDashboard }) => {

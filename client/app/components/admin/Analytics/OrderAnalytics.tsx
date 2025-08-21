@@ -14,7 +14,7 @@ import {
 import Loader from '../../Loader/Loader';
 
 type Props = {
-  isDashboard: boolean;
+  isDashboard?: boolean;
 };
 
 // Error Boundary to catch rendering errors
