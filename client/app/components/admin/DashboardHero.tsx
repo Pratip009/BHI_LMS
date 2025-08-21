@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import DashboardHeader from "./DashboardHeader"
 import DashboardWidgets from "../../components/admin/widgets/DashboardWidgets"
 type Props = {
-    isDashboard: boolean
+    isDashboard?: boolean
 }
 
 const DashboardHero = ({ isDashboard }: Props) => {
