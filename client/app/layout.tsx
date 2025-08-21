@@ -2,7 +2,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from './utils/theme-provider'
-import { Poppins, Josefin_Sans } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import { Providers } from './Provider'
 import { SessionProvider } from 'next-auth/react'
@@ -10,26 +9,28 @@ import { useLoadUserQuery } from '@/redux/features/api/apiSlice'
 import Loader from "./components/Loader/Loader"
 import socketIO from 'socket.io-client'
 import { useEffect } from 'react'
+import localFont from 'next/font/local'
+
 const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || ""
 const socketId = socketIO(ENDPOINT, { transports: ['websocket'] })
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-Poppins"
-})
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-Josefin"
+const poppins = localFont({
+  src: [
+    { path: '/fonts/Poppins-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '/fonts/Poppins-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-Poppins',
 })
 
+const josefin = localFont({
+  src: [
+    { path: '/fonts/JosefinSans-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '/fonts/JosefinSans-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-Josefin',
+})
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}>
@@ -46,7 +47,6 @@ export default function RootLayout({
   )
 }
 
-
 const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isLoading } = useLoadUserQuery({})
 
@@ -54,12 +54,5 @@ const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     socketId.on("connection", () => { })
   }, [])
 
-
-  return (
-    <>
-      {
-        isLoading ? <Loader /> : <>{children}</>
-      }
-    </>
-  )
+  return isLoading ? <Loader /> : <>{children}</>
 }
